@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+/// Refactored top app bar widget
+class TopBar extends StatelessWidget implements PreferredSizeWidget {
+  /// Size of top app bar
+  final double size;
+
+  /// Size must be provided when creating app bar
+  TopBar({@required this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      leading: InkWell(
+        onTap: () => Navigator.pushNamed(context, '/login'),
+        //onTap: () {},
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: ScreenUtil().setWidth(20.0),
+            bottom: ScreenUtil().setWidth(100.0),
+          ),
+          child: Icon(
+            Icons.menu,
+            size: ScreenUtil().setHeight(150.0),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(size);
+}

@@ -12,6 +12,7 @@
 /android/
 /gen/
 /ios/
+/misc/
 
 # IntelliJ related
 *.iml
