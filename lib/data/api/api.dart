@@ -1,24 +1,23 @@
-import 'package:bloc/bloc.dart';
+import 'dart:convert';
 
-/// Bloc delegate used to test by printing events/transitions/errors.
-class SimpleBlocDelegate extends BlocDelegate {
-  @override
-  void onEvent(Bloc bloc, Object event) {
-    super.onEvent(bloc, event);
-    //print('$event   ${DateTime.now()}');
-  }
+import 'package:http/http.dart' as http;
 
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
-    //print(transition);
-  }
+/// API client handles calls to endpoints and returns response
+class ApiClient {
+  /// [httpClient] needs to be injected.
+  final http.Client httpClient;
 
-  @override
-  void onError(Bloc bloc, Object error, StackTrace stacktrace) {
-    super.onError(bloc, error, stacktrace);
-    print(bloc);
-    print(error);
-    print(stacktrace);
+  /// Constructor
+  ApiClient({this.httpClient});
+
+  /// Sends out a get request with [url] and [key]
+  Future<Map<String, dynamic>> getData(String url, String key) async {
+    final response = await httpClient.get(url, headers: {'x-api-key': '$key'});
+
+    if (response.statusCode != 200) {
+      throw Exception('Error getting data');
+    } else {
+      return jsonDecode(response.body);
+    }
   }
 }

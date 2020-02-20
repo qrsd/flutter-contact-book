@@ -13,6 +13,7 @@
 /gen/
 /ios/
 /misc/
+/lib/data/api/
 
 # IntelliJ related
 *.iml

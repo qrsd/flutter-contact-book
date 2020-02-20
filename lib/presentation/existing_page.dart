@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Existing page
+/// Log in to existing account page based on Node Code provided
+/// Button does nothing at the moment.
 class ExistingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ExistingPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    /// header
+                    /// Header
                     Container(
                       padding: EdgeInsets.only(
                         left: ScreenUtil().setWidth(50.0),
@@ -36,7 +37,7 @@ class ExistingPage extends StatelessWidget {
                       height: ScreenUtil().setHeight(100.0),
                     ),
 
-                    /// code
+                    /// Textfield
                     Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: ScreenUtil().setWidth(50.0)),
@@ -54,7 +55,7 @@ class ExistingPage extends StatelessWidget {
                       height: ScreenUtil().setHeight(100.0),
                     ),
 
-                    /// button
+                    /// Button
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: ScreenUtil().setWidth(50.0),

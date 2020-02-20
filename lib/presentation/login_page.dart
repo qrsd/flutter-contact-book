@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// This is the registration/login page
+/// This is the registration/login page the sign up button does nothing at the moment
+/// and the existing login button shows you to a different page.
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  /// will be replaced with BLoC
-  var radioValue;
+  var _radioValue;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
           height: ScreenUtil().setHeight(2960.0),
           child: Stack(
             children: <Widget>[
-              /// header
+              /// Header
               Align(
                 alignment: Alignment(-1, -.7),
                 child: Container(
@@ -49,12 +49,15 @@ class _LoginPageState extends State<LoginPage> {
                             .bodyText2
                             .copyWith(fontSize: ScreenUtil().setWidth(70.0)),
                       ),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(350.0),
+                      ),
                     ],
                   ),
                 ),
               ),
 
-              /// center
+              /// User data fields
               Align(
                 alignment: Alignment(0, 0),
                 child: Column(
@@ -132,7 +135,6 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-                    // birthday
                     SizedBox(
                       height: ScreenUtil().setHeight(80.0),
                     ),
@@ -190,10 +192,10 @@ class _LoginPageState extends State<LoginPage> {
                         children: <Widget>[
                           Radio(
                             value: 1,
-                            groupValue: radioValue,
+                            groupValue: _radioValue,
                             onChanged: (_) {
                               setState(() {
-                                radioValue = _;
+                                _radioValue = _;
                               });
                             },
                           ),
@@ -207,10 +209,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           Radio(
                             value: 2,
-                            groupValue: radioValue,
+                            groupValue: _radioValue,
                             onChanged: (_) {
                               setState(() {
-                                radioValue = _;
+                                _radioValue = _;
                               });
                             },
                           ),

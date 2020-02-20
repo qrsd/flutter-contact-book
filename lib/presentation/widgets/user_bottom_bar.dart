@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Refactored bottom app bar widget
+/// Bottom bar for user/link page with stubbed buttons.
 class UserBottomBar extends StatelessWidget implements PreferredSizeWidget {
   /// Size of top app bar
   final double size;

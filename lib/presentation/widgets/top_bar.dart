@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Refactored top app bar widget
+/// Top bar with menu widget that pushes login/registration page.
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
-  /// Size of top app bar
+  /// Size of top app bar.
   final double size;
 
-  /// Size must be provided when creating app bar
+  /// Size must be provided when creating app bar.
   TopBar({@required this.size});
 
   @override

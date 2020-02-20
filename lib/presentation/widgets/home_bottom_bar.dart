@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Refactored bottom app bar widget
+/// Bottom bar for the home page with stubbed buttons.
 class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
   /// Size of top app bar
   final double size;
@@ -15,6 +15,7 @@ class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
     return BottomAppBar(
         child: Row(
       children: <Widget>[
+        /// People icon
         Expanded(
           child: InkWell(
             onTap: () {},
@@ -27,6 +28,8 @@ class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
+
+        /// Search icon
         Expanded(
           child: InkWell(
             onTap: () {},
@@ -39,6 +42,8 @@ class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
+
+        /// History icon
         Expanded(
           child: InkWell(
             onTap: () {},

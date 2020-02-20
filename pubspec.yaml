@@ -14,11 +14,13 @@ dependencies:
   equatable:
   flutter_bloc:
   flutter_screenutil:
-  firebase_core: 
-  firebase_analytics:
-  path_provider:
   permission_handler:
-  shared_preferences:
+  http:
+  url_launcher:
+  #firebase_core:
+  #firebase_analytics:
+  #path_provider:
+  #shared_preferences:
   #sqflite:
   #firebase_admob:  
   #path_provider: 
@@ -36,6 +38,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/profile/
     - assets/
   #   - images/a_dot_ham.jpeg

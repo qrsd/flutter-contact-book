@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:upwork_tyler/presentation/user_page.dart';
 
+import './constants.dart';
+import './existing_page.dart';
 import './home_page.dart';
 import './login_page.dart';
-import './existing_page.dart';
-import './constants.dart';
+import './user_page.dart';
 
 /// Presets and routes
 class App extends StatelessWidget {
@@ -14,7 +14,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-//    SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeData,
