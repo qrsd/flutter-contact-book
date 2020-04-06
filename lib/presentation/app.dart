@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import './constants.dart';
 import './existing_page.dart';
 import './home_page.dart';
-import './login_page.dart';
+import './registration_page.dart';
 import './user_page.dart';
 
 /// Presets and routes
@@ -20,12 +20,12 @@ class App extends StatelessWidget {
       // ignore: missing_return
       onGenerateRoute: (settings) {
         switch (settings.name) {
+          case '/login':
+            return CupertinoPageRoute(
+                builder: (_) => RegistrationPage(), settings: settings);
           case '/':
             return CupertinoPageRoute(
                 builder: (_) => HomePage(), settings: settings);
-          case '/login':
-            return CupertinoPageRoute(
-                builder: (_) => LoginPage(), settings: settings);
           case '/existing':
             return CupertinoPageRoute(
                 builder: (_) => ExistingPage(), settings: settings);
