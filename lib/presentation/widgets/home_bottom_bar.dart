@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Bottom bar for the home page with stubbed buttons.
-class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
+class BottomBar extends StatelessWidget implements PreferredSizeWidget {
   /// Size of top app bar
   final double size;
 
   /// Size must be provided when creating app bar
-  HomeBottomBar({@required this.size});
+  BottomBar({@required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,12 @@ class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
         /// People icon
         Expanded(
           child: InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(0.0)),
-              child: Icon(
-                Icons.people,
-                size: _iconSize,
-              ),
+            onTap: () {
+              Navigator.pushNamed(context, '/links');
+            },
+            child: Icon(
+              Icons.people,
+              size: _iconSize,
             ),
           ),
         ),
@@ -32,13 +31,12 @@ class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
         /// Search icon
         Expanded(
           child: InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(0.0)),
-              child: Icon(
-                Icons.search,
-                size: _iconSize,
-              ),
+            onTap: () {
+              Navigator.pushNamed(context, '/add');
+            },
+            child: Icon(
+              Icons.search,
+              size: _iconSize,
             ),
           ),
         ),
@@ -46,13 +44,12 @@ class HomeBottomBar extends StatelessWidget implements PreferredSizeWidget {
         /// History icon
         Expanded(
           child: InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(0.0)),
-              child: Icon(
-                Icons.history,
-                size: _iconSize,
-              ),
+            onTap: () {
+              Navigator.pushNamed(context, '/activity');
+            },
+            child: Icon(
+              Icons.history,
+              size: _iconSize,
             ),
           ),
         ),

@@ -17,8 +17,11 @@ class LinksLoaded extends LinksState {
   /// [links] is a list of all loaded links.
   final List<dynamic> links;
 
+  /// [requester] is the node requesting all its links.
+  final String requester;
+
   /// Constructor
-  LinksLoaded(this.links);
+  LinksLoaded(this.links, this.requester);
 
   @override
   List<Object> get props => [links];

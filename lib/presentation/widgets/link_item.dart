@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../domain/models/link.dart';
+import './profile_picture.dart';
 
 /// Builds a link item.
 class LinkItem extends StatelessWidget {
@@ -30,18 +31,8 @@ class LinkItem extends StatelessWidget {
           child: Row(
             children: <Widget>[
               /// Icon/image
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color(0xff2A395A),
-                      width: ScreenUtil().setWidth(5)),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Icon(
-                  Icons.person,
-                  color: Color(0xff2A395A),
-                  size: ScreenUtil().setWidth(200.0),
-                ),
+              ProfilePicture(
+                color: Color(0xff2A395A),
               ),
               SizedBox(
                 width: ScreenUtil().setWidth(50.0),

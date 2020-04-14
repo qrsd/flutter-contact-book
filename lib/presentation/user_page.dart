@@ -9,11 +9,11 @@ import '../data/api/api.dart';
 import '../data/api/broker_repository_impl.dart';
 import '../domain/blocs/broker/bloc.dart';
 import '../domain/models/broker.dart';
+import './widgets/home_bottom_bar.dart';
 import './widgets/top_bar.dart';
-import './widgets/user_bottom_bar.dart';
 
-/// This is the broker/user page that is displayed when selecting
-/// one of the links from the home page.
+/// This is the user page that is displayed when selecting
+/// one of the links from the links page.
 class UserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _UserPageInjected extends StatelessWidget {
       appBar: TopBar(
         size: ScreenUtil().setHeight(200.0),
       ),
-      bottomNavigationBar: UserBottomBar(
+      bottomNavigationBar: BottomBar(
         size: ScreenUtil().setHeight(500.0),
       ),
       resizeToAvoidBottomInset: false,
@@ -54,7 +54,7 @@ class _UserPageInjected extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     children: <Widget>[
-                      /// mage/icon
+                      /// image/icon
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: ScreenUtil().setWidth(100.0)),

@@ -28,9 +28,14 @@ class LinksBloc extends Bloc<LinksEvent, LinksState> {
   }
 
   Stream<LinksState> _mapLinksLoadEventToState(LinksLoadEvent event) async* {
+    yield LinksLoading();
     try {
       final links = await linkRepositoryImpl.getLinks(event.nodeCode);
-      yield LinksLoaded(links.map(Link.fromEntity).toList());
+      if (links.length == 0) {
+        yield LinksNotLoaded();
+      } else {
+        yield LinksLoaded(links.map(Link.fromEntity).toList(), event.nodeCode);
+      }
     } on Exception catch (e) {
       print(e);
       yield LinksNotLoaded();
