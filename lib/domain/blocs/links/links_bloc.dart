@@ -24,6 +24,8 @@ class LinksBloc extends Bloc<LinksEvent, LinksState> {
   ) async* {
     if (event is LinksLoadEvent) {
       yield* _mapLinksLoadEventToState(event);
+    } else if (event is LinksPostEvent) {
+      yield* _mapLinksPostEventToState(event);
     }
   }
 
@@ -40,5 +42,16 @@ class LinksBloc extends Bloc<LinksEvent, LinksState> {
       print(e);
       yield LinksNotLoaded();
     }
+  }
+
+  Stream<LinksState> _mapLinksPostEventToState(LinksPostEvent event) async* {
+    try {
+      var postMessage = '''
+{"nodeid": "ABC123","version":2,"attributes":[{"field":"Names.name.node.lastname","id":"1539731886","value":"${event.surName}"},{"field":"Names.name.node.firstname","id":"4731886","value":"${event.firstName}"},{"field":"Names.name.node.dob","id":"1539731886","value":"${event.birthday}"},{"field":"Calling.mobile.node.mobilenumber","id":"53973541386","value":"${event.email}"},{"field":"thisisme.password","id":"5","value":"${event.password}"},{"field":"Names.name.node.gender","id":"1539731886","value":"${event.gender}"},''';
+      await linkRepositoryImpl.postLink(postMessage);
+    } on Exception catch (e) {
+      print(e);
+    }
+    yield LinksPosted();
   }
 }

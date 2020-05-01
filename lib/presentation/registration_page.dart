@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../domain/blocs/links/bloc.dart';
 import './widgets/top_bar.dart';
 
 /// This is the registration page the sign up button is currently inactive.
@@ -11,7 +13,33 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
-  var _radioValue;
+  TextEditingController _firstName;
+  TextEditingController _surName;
+  TextEditingController _email;
+  TextEditingController _password;
+  String _birthday;
+  int _gender;
+
+  @override
+  void initState() {
+    super.initState();
+    _firstName = TextEditingController();
+    _surName = TextEditingController();
+    _email = TextEditingController();
+    _password = TextEditingController();
+    _birthday =
+        '${DateTime.now().month}${DateTime.now().day}${DateTime.now().year}';
+    _gender = 0;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _firstName.dispose();
+    _surName.dispose();
+    _email.dispose();
+    _password.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +100,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         children: <Widget>[
                           Expanded(
                             child: TextField(
+                              controller: _firstName,
                               textCapitalization: TextCapitalization.words,
                               style: Theme.of(context)
                                   .textTheme
@@ -91,6 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                           Expanded(
                             child: TextField(
+                              controller: _surName,
                               textCapitalization: TextCapitalization.words,
                               style: Theme.of(context)
                                   .textTheme
@@ -107,6 +137,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ],
                       ),
                       TextField(
+                        controller: _email,
                         style: Theme.of(context).textTheme.bodyText1.copyWith(
                               fontWeight: FontWeight.normal,
                               fontSize: ScreenUtil().setWidth(60.0),
@@ -117,6 +148,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             hintText: 'Mobile number or email address'),
                       ),
                       TextField(
+                        controller: _password,
                         obscureText: true,
                         style: Theme.of(context).textTheme.bodyText1.copyWith(
                               fontWeight: FontWeight.normal,
@@ -168,7 +200,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                           child: CupertinoDatePicker(
                             mode: CupertinoDatePickerMode.date,
-                            onDateTimeChanged: (_) {},
+                            onDateTimeChanged: (s) {
+                              _birthday = '${s.month}${s.day}${s.year}';
+                            },
                           ),
                         ),
                       ),
@@ -184,10 +218,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     children: <Widget>[
                       Radio(
                         value: 1,
-                        groupValue: _radioValue,
+                        groupValue: _gender,
                         onChanged: (_) {
                           setState(() {
-                            _radioValue = _;
+                            _gender = 1;
                           });
                         },
                       ),
@@ -200,10 +234,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       Radio(
                         value: 2,
-                        groupValue: _radioValue,
+                        groupValue: _gender,
                         onChanged: (_) {
                           setState(() {
-                            _radioValue = _;
+                            _gender = 2;
                           });
                         },
                       ),
@@ -228,7 +262,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   height: ScreenUtil().setHeight(200.0),
                   width: MediaQuery.of(context).size.width * .9,
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      BlocProvider.of<LinksBloc>(context).add(LinksPostEvent(
+                          _firstName.text,
+                          _surName.text,
+                          _email.text,
+                          _password.text,
+                          _birthday,
+                          _gender.toString()));
+                    },
                     color: Color(0xff2A395A),
                     textColor: Colors.white,
                     child: Text('Sign Up'),

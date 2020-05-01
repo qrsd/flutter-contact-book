@@ -27,5 +27,8 @@ class LinksLoaded extends LinksState {
   List<Object> get props => [links];
 }
 
+/// State yielded after POST
+class LinksPosted extends LinksState {}
+
 /// State yielded while links are being loaded.
 class LinksNotLoaded extends LinksState {}

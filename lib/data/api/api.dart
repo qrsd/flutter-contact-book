@@ -20,4 +20,12 @@ class ApiClient {
       return jsonDecode(response.body);
     }
   }
+
+  /// Sends out a get request with [url] and [key]
+  void postData(String url, String postMessage) async {
+    final response = await httpClient.post(url, body: postMessage);
+    if (response.statusCode != 200) {
+      throw Exception(response.body);
+    }
+  }
 }
