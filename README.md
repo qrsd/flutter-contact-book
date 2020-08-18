@@ -1,8 +1,11 @@
 # upwork_tyler
 
 ## About
-Coded 
+Coded May 2020
 
-A new Flutter project.
+<img src="images/gif.gif" height="532">
 
-## Design
+Upwork freelance project.
+
+Specialized contact book.
+
